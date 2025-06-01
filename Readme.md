@@ -10,6 +10,10 @@ The folder is called public (by convention) because everything inside it is publ
 
 https://platform.openai.com/api-keys
 
+https://eu-north-1.console.aws.amazon.com/ec2/home?region=eu-north-1#Home:https://eu-north-1.console.aws.amazon.com/ec2/home?region=eu-north-1#Home:
+
+[Step-by-Step Guide: Deploying a Full-Stack App on AWS EC2. - DEV Community](https://dev.to/backendbro/step-by-step-guide-deploying-a-full-stack-app-on-aws-ec2-21e1)
+
 ## Roadmap
 
 - [x] delete Tasks

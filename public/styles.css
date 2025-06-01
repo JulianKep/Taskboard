@@ -85,6 +85,8 @@ body {
   border-radius: 5px;
   font-family: var(--font);
   font-size: 16px;
+  outline: none;
+  box-shadow: none;
 }
 
 .myForm input,
@@ -104,7 +106,6 @@ body {
   background-color: #3a5a40;
 }
 
-
 .rounded-square {
   padding: 0 10px; /* horizontal padding */
   height: 20px;
@@ -118,25 +119,6 @@ body {
   font-family: var(--font);
 }
 
-.admin {
-  background-color: #bc4b51;
-}
-
-.uni {
-  background-color: #8cb369; /* blue */
-}
-
-.project {
-  background-color: #85acf4; /* green */
-}
-
-.leisure {
-  background-color: #f4a259; /* orange */
-}
-
-.none {
-  background-color: #5b8e7d; /* gray */
-}
 
 /*===ROWS===*/
 
@@ -179,6 +161,26 @@ ul {
   align-items: center;
   gap: 10px;
   margin-left: auto;
+}
+
+.admin {
+  background-color: #bc4b51;
+}
+
+.uni {
+  background-color: #8cb369; /* blue */
+}
+
+.project {
+  background-color: #85acf4; /* green */
+}
+
+.leisure {
+  background-color: #f4a259; /* orange */
+}
+
+.none {
+  background-color: #5b8e7d; /* gray */
 }
 
 .delete-btn {

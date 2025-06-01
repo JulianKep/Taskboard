@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <title>Task List</title>
+  </head>
+  <body>
+    <div class="banner-wrapper">
+      <img src="images/banner.jpg" class="banner" />
+      <img src="icons/bullseye.svg" class="overlay-svg" />
+    </div>
+
+    <div class="content">
+      <div class="header-row">
+        <h1>Taskboard</h1>
+
+        <div class="counter">
+          <strong class="numofcompletions" id="counter">0</strong>
+        </div>
+      </div>
+
+      <form class="myForm" id="myForm">
+        <input
+          type="text"
+          placeholder="New Task"
+          id="inputField"
+          name="inputField"
+          required
+        />
+        <select id="categories" name="category">
+          <option value="none">None</option>
+          <option value="admin">Admin</option>
+          <option value="uni">Uni</option>
+          <option value="project">Project</option>
+          <option value="leisure">Leisure</option>
+        </select>
+        <button type="submit">Submit</button>
+      </form>
+
+      <ul id="task-list"></ul>
+
+      <!-- <button id="reload">RELOAD</button> -->
+    </div>
+    <script>
+      function attach_complete_button_listeners() {
+        document.querySelectorAll(".complete-btn").forEach((button) => {
+          button.addEventListener("click", () => {
+            const taskId = button.getAttribute("data-id");
+            console.log("Clicked:", taskId);
+
+            fetch("/complete", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ id: taskId }),
+            }).then(() => loadTasks());
+          });
+        });
+      }
+
+      function attach_delete_button_listeners() {
+        document.querySelectorAll(".delete-btn").forEach((button) => {
+          button.addEventListener("click", () => {
+            const taskId = button.getAttribute("data-id");
+            console.log("Clicked:", taskId);
+
+            fetch("/delete", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ id: taskId }),
+            }).then(() => loadTasks());
+          });
+        });
+      }
+
+      function loadTasks() {
+        // Function to fetch tasks from the backend and display them
+        fetch("/tasks")
+          //then runs when the previuos asyncronous function runs succesfully
+          //it receives a callback function as parameter, a function that is passed and executet immediatly in this case
+          .then((response) => response.json())
+          .then((data) => {
+            const taskList = document.getElementById("task-list");
+            taskList.innerHTML = "";
+            data.rows.forEach((element) => {
+              const listItem = document.createElement("li");
+              const task_id = String(element.id).padStart(4, "0");
+
+              listItem.innerHTML = `
+            <div class="row">
+              <div class"left-group">
+                <button class="complete-btn" data-id="${element.id}">
+                  <img src="/icons/done.svg" class="checkmark"/>
+                </button>
+
+                <strong>${element.task}</strong>
+
+
+              </div>
+              
+
+
+              <div class="right-group">
+                <div class="rounded-square ${element.category}">
+                  ${element.category}
+                </div>
+
+                <button class="delete-btn" data-id="${element.id}">
+                  <img src="/icons/delete.svg" class="checkmark"/>
+                </button>
+
+                <p class="taskid">task_id: ${task_id}</p>
+              </div>
+
+            </div>
+            `;
+              taskList.appendChild(listItem);
+            });
+
+            attach_complete_button_listeners();
+            attach_delete_button_listeners();
+
+            updateCounter();
+          });
+      }
+
+      document.addEventListener("DOMContentLoaded", loadTasks);
+
+      //this REGISTERS the function to be called later
+      document.getElementById("reload").addEventListener("click", loadTasks);
+
+      //Submit button fuctionality
+      document.getElementById("myForm").addEventListener("submit", () => {
+        const task_input = document.getElementById("inputField").value;
+        const category_input = document.getElementById("categories").value;
+
+        fetch("/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ task: task_input, category: category_input }),
+        }).then((res) => {
+          loadTasks();
+          console.log(res);
+        });
+      });
+
+      //Update Counter function
+      function updateCounter() {
+        const counter = document.getElementById("counter").value;
+
+        fetch("/num")
+          .then((res) => res.json())
+          .then((data) => {
+            const counter = document.getElementById("counter");
+            counter.innerHTML = data.num;
+          });
+      }
+    </script>
+  </body>
+</html>

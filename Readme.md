@@ -33,3 +33,9 @@ https://eu-north-1.console.aws.amazon.com/ec2/home?region=eu-north-1#Home:https:
 - [ ] rewards somehow maybe with euros
 
 - [ ] schedule tasks
+
+- [ ] sub-tasks
+
+- [ ] set difficulty of task
+
+- [ ] 

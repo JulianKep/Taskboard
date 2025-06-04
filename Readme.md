@@ -38,4 +38,4 @@ https://eu-north-1.console.aws.amazon.com/ec2/home?region=eu-north-1#Home:https:
 
 - [ ] set difficulty of task
 
-- [ ] 
+- [ ] Telegram bot notification

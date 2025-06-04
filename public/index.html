@@ -40,7 +40,7 @@
 
       <ul id="task-list"></ul>
 
-      <!-- <button id="reload">RELOAD</button> -->
+      <button id="reload">RELOAD</button>
     </div>
     <script>
       function attach_complete_button_listeners() {
@@ -95,12 +95,19 @@
 
                 <strong>${element.task}</strong>
 
-
               </div>
-              
-
-
+            
               <div class="right-group">
+
+                <div class="rounded-square ${element.statuss}">
+                  <select class="status-dropdown" data-id="${element.id}">
+                    <option value="None">None</option>
+                    <option value="pending">In Progress</option>
+                    <option value="do-today">Done</option>
+                    <option value="Blocked">Blocked</option>
+                  </select>
+                </div>
+
                 <div class="rounded-square ${element.category}">
                   ${element.category}
                 </div>

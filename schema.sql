@@ -23,16 +23,15 @@ INSERT INTO tasklist (task, descript) VALUES ('Kryptographie Machen', 'blatt abg
 UPDATE tasklist SET done = 0;
 
 
-
-
-
+--delete table
+DROP TABLE IF EXISTS tasklist;
 
 
 CREATE TABLE tasklist (
     id INTEGER PRIMARY KEY,
     task TEXT NOT NULL,
     done INTEGER NOT NULL DEFAULT 0,
-    pending INTEGER NOT NULL DEFAULT 0,
+    statuss TEXT NOT NULL DEFAULT 'None',
     score INTEGER NOT NULL DEFAULT 0,
     category TEXT NOT NULL DEFAULT 'None',
     created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP

@@ -93,6 +93,7 @@ body {
 .myForm select {
   background-color: #3e4e3e;
   color: #dad7cd;
+  padding-right: 10px;
 }
 
 .myForm button {
@@ -106,19 +107,6 @@ body {
   background-color: #3a5a40;
 }
 
-.rounded-square {
-  padding: 0 10px; /* horizontal padding */
-  height: 20px;
-  background-color: rgba(10, 10, 141, 0.582);
-  color: rgb(0, 0, 0);
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  font-family: var(--font);
-}
-
 
 /*===ROWS===*/
 
@@ -130,7 +118,7 @@ ul {
 
 .row {
   display: flex;
-  align-items: center;
+  align-items: center; /* ensures vertical centering */
   gap: 6px;
   font-family: var(--font);
   color: #dad7cd;
@@ -141,6 +129,11 @@ ul {
 .checkmark {
   filter: brightness(10);
   transition: filter 0.3s ease;
+  width: 25px;
+  height: 25px;
+  /* Remove margin-top or top if present */
+  vertical-align: middle; /* helps with inline SVGs/images */
+  display: inline-block;   /* ensures proper alignment */
 }
 
 .checkmark:hover {
@@ -156,6 +149,7 @@ ul {
   margin-left: 10px;
 }
 
+
 .right-group {
   display: flex;
   align-items: center;
@@ -163,12 +157,29 @@ ul {
   margin-left: auto;
 }
 
+
+.rounded-square {
+  width: 45px; /* adjust as needed */
+  height: 30px; /* adjust as needed */
+  padding: 0 10px; /* horizontal padding */
+  height: 20px;
+  background-color: rgba(10, 10, 141, 0.582);
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-family: var(--font);
+}
+
+
 .admin {
   background-color: #bc4b51;
 }
 
 .uni {
-  background-color: #8cb369; /* blue */
+  background-color: #68d153; /* blue */
 }
 
 .project {
@@ -180,7 +191,15 @@ ul {
 }
 
 .none {
-  background-color: #5b8e7d; /* gray */
+  background-color: #000000; /* gray */
+  visibility: hidden;
+}
+
+.None {
+  background-color: transparent;
+  border: 1px solid #555252; /* faint gray */
+  color: transparent;        /* hide text */
+  visibility: visible;  
 }
 
 .delete-btn {

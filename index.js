@@ -59,19 +59,32 @@ app.post("/delete", (req, res) => {
 app.post("/submit", function (req, res) {
   const task = req.body.task;
   const category = req.body.category;
-    db.run(
-      "INSERT INTO tasklist (task, category) VALUES (?, ?);",
-      [task, category],
-      (err) => {
-        if (err) {
-          console.error(err);
-          res.status(500).json({ success: false });
-        } else {
-          res.json({ success: true });
-        }
+  db.run(
+    "INSERT INTO tasklist (task, category) VALUES (?, ?);",
+    [task, category],
+    (err) => {
+      if (err) {
+        console.error(err);
+        res.status(500).json({ success: false });
+      } else {
+        res.json({ success: true });
       }
-    );
+    }
+  );
+});
 
+app.post("/update", function (req, res) {
+  const column = req.body.column;
+  const value = req.body.value;
+
+  db.run("INSERT INTO tasklist (?) VALUES (?);", [column, value], (err) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ success: false });
+    } else {
+      res.json({ success: true });
+    }
+  });
 });
 
 //STUPID VERSION:

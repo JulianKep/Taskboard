@@ -2,7 +2,6 @@ import sqlite3 from "sqlite3";
 import express from "express";
 import path from "path";
 
-import chat from "./openaiService.js";
 
 const db = new sqlite3.Database("data2.db");
 

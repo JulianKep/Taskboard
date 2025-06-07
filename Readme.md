@@ -6,6 +6,12 @@ node index.js in root directory
 
 The folder is called public (by convention) because everything inside it is publicly accessible to the client — meaning the browser can load files from it directly, it is sent to the client
 
+## Deployment:
+
+1. SSH into EC2:
+   
+   ssh -i "julian-pc.pem" ubuntu@ec2-13-60-2-93.eu-north-1.compute.amazonaws.com
+
 ## Links:
 
 https://platform.openai.com/api-keys

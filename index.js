@@ -11,7 +11,7 @@ const PORT = 8080;
 
 //this starts the server ans listens on port 8080
 //it takes a port and function as argument, the function is executed if the connection is succesful
-app.listen(PORT, () => console.log(`itas alive on ${PORT}`));
+app.listen(PORT, '0.0.0.0', () => console.log(`itas alive on ${PORT}`));
 
 //specify which files to serve as static files
 //this stuff gets put in every app.post and app.get
